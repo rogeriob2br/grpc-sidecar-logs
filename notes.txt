@@ -1,0 +1,20 @@
+./ghz -c 64 -n 100000 --insecure \
+  --proto /home/rogerio.ferreira/go/src/sidecar-log/proto/logcanal.proto \
+  --call logcanal.LogCanalService.sink \
+ --stream-call-count=5 \
+  -d '{"message": {"message": "Hello","timestamp": "2006-01-02T15:04:05.999999999Z","service": {"name": "Hello","version": "Hello"},"tags": "{{randomString 8 }}"}}' \
+  localhost:50001
+
+
+-stream-dynamic-messages=true --stream-call-count=5 -d '{"name":"{{randomString 8 }}"}'
+
+
+SEM RELEASE PROFILE.
+Latency distribution:
+  10 % in 10.46 s
+  25 % in 10.46 s
+  50 % in 10.46 s
+  75 % in 10.46 s
+  90 % in 10.46 s
+  95 % in 10.46 s
+  99 % in 10.46 s
